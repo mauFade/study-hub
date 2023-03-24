@@ -15,6 +15,7 @@ func main() {
 	router := gin.Default()
 
 	router.POST("/users", controllers.CreateUserController)
+	router.GET("/users", controllers.ListUsersController)
 
 	router.Run()
 }

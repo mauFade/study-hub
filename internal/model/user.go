@@ -48,4 +48,5 @@ func (user *User) Validate() error {
 
 type UserRepository interface {
 	Create(user *User) error
+	Find() []User
 }

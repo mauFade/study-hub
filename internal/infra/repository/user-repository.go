@@ -18,3 +18,11 @@ func (repo *UserRepository) Create(user *model.User) *gorm.DB {
 
 	return result
 }
+
+func (repo *UserRepository) Find() []model.User {
+	var users []model.User
+
+	repo.DB.Raw("SELECT * FROM users").Scan(&users)
+
+	return users
+}

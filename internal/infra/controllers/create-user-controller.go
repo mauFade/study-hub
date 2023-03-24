@@ -1,8 +1,6 @@
 package controllers
 
 import (
-	"fmt"
-
 	"github.com/gin-gonic/gin"
 	"github.com/mauFade/study-hub/internal/infra/repository"
 	"github.com/mauFade/study-hub/internal/loaders"
@@ -20,17 +18,18 @@ func CreateUserController(context *gin.Context) {
 
 	context.Bind(&body)
 
-	fmt.Print(body)
-
 	repo := repository.NewRepository(loaders.DB)
 	user := usecase.NewCreateUserUseCase(*repo)
 
-	output, err := user.Execute(usecase.CreateUserInputDTO{Name: body.Name, Email: body.Email, University: body.University})
+	output, err := user.Execute(usecase.CreateUserInputDTO{
+		Name:       body.Name,
+		Email:      body.Email,
+		University: body.University,
+	})
 
 	if err != nil {
-		// context.Status(400)
-		fmt.Print(err)
 		context.JSON(400, err)
+
 		return
 	}
 
