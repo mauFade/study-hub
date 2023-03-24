@@ -8,9 +8,9 @@ import (
 )
 
 type CreateUserInputDTO struct {
-	Name       string `json:"name"`
-	Email      string `json:"email"`
-	University string `json:"university"`
+	Name       string
+	Email      string
+	University string
 }
 
 type CreateUserOutputDTO struct {
