@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/mauFade/study-hub/internal/infra/controllers"
 	"github.com/mauFade/study-hub/internal/loaders"
 )
 
@@ -13,7 +14,7 @@ func init() {
 func main() {
 	router := gin.Default()
 
-	router.POST("/users")
+	router.POST("/users", controllers.CreateUserController)
 
 	router.Run()
 }
