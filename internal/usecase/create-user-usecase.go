@@ -11,6 +11,7 @@ type CreateUserInputDTO struct {
 	Name       string
 	Email      string
 	University string
+	Password   string
 }
 
 type CreateUserOutputDTO struct {
@@ -18,6 +19,8 @@ type CreateUserOutputDTO struct {
 	Name       string
 	Email      string
 	University string
+	Password   string
+	PlanId     string
 	CreatedAt  time.Time
 	UpdatedAt  time.Time
 }
@@ -33,7 +36,7 @@ func NewCreateUserUseCase(repository repository.UserRepository) *CreateUserUseCa
 }
 
 func (createUseCase *CreateUserUseCase) Execute(data CreateUserInputDTO) (*CreateUserOutputDTO, error) {
-	user := model.NewUser(data.Name, data.Email, data.University)
+	user := model.NewUser(data.Name, data.Email, data.University, data.Password, "")
 
 	err := user.Validate()
 
@@ -48,6 +51,8 @@ func (createUseCase *CreateUserUseCase) Execute(data CreateUserInputDTO) (*Creat
 		Name:       user.Name,
 		Email:      user.Email,
 		University: user.University,
+		Password:   user.Password,
+		PlanId:     user.PlanID,
 		CreatedAt:  user.CreatedAt,
 		UpdatedAt:  user.UpdatedAt,
 	}, nil

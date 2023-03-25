@@ -11,6 +11,7 @@ type CreateUserInputDTO struct {
 	Name       string `json:"name"`
 	Email      string `json:"email"`
 	University string `json:"university"`
+	Password   string `json:"password"`
 }
 
 func CreateUserController(context *gin.Context) {
@@ -25,10 +26,13 @@ func CreateUserController(context *gin.Context) {
 		Name:       body.Name,
 		Email:      body.Email,
 		University: body.University,
+		Password:   body.Password,
 	})
 
 	if err != nil {
-		context.JSON(400, err)
+		context.JSON(400, gin.H{
+			"error": err.Error(),
+		})
 
 		return
 	}
