@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/mauFade/study-hub/internal/infra/repository"
 	"github.com/mauFade/study-hub/internal/loaders"
-	"github.com/mauFade/study-hub/internal/usecase"
+	usecase "github.com/mauFade/study-hub/internal/usecase/user"
 )
 
 type CreateUserInputDTO struct {
